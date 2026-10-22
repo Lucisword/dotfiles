@@ -1,0 +1,10 @@
+#!/bin/bash
+apply() {
+  on=$(cat /sys/class/power_supply/{AC,ADP,ACAD}*/online 2>/dev/null | head -1)
+  [ "$on" = 1 ] && hz=144 || hz=60
+  powerprofilesctl set $([ "$on" = 1 ] && echo balanced || echo power-saver)
+  pkill -RTMIN+8 waybar
+  hyprctl eval "hl.monitor({ output = \"\", mode = \"1920x1080@$hz\", position = \"auto\", scale = 1 })"
+}
+apply
+udevadm monitor -u -s power_supply | while read -r _; do sleep 1; apply; done

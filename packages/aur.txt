@@ -1,0 +1,7 @@
+brave-bin
+google-chrome
+mongodb-bin
+mongosh-bin
+visual-studio-code-bin
+yay
+yay-debug

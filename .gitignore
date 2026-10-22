@@ -1,0 +1,7 @@
+*.key
+*.pem
+id_*
+.env
+hosts.yml
+*.bak*
+*.orig

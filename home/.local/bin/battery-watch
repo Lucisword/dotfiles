@@ -1,0 +1,17 @@
+#!/bin/bash
+LOW=${LOW:-20}; CRIT=${CRIT:-10}
+bat=/sys/class/power_supply/BAT1
+state=/tmp/battery-watch.state
+check() {
+  cap=$(<$bat/capacity); st=$(<$bat/status)
+  if [ "$st" != "Discharging" ]; then rm -f "$state"; return; fi
+  last=$(cat "$state" 2>/dev/null || echo none)
+  if [ "$cap" -le "$CRIT" ] && [ "$last" != crit ]; then
+    notify-send -u critical "Battery critical: ${cap}%" "Plug in now. Hibernates at 5%."; echo crit > "$state"
+  elif [ "$cap" -le "$LOW" ] && [ "$last" = none ]; then
+    notify-send -u normal "Battery low: ${cap}%" "Plug in soon."; echo low > "$state"
+  fi
+}
+check
+[ "$1" = --once ] && exit
+upower --monitor | while read -r _; do check; done

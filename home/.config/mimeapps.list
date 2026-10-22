@@ -1,0 +1,10 @@
+[Default Applications]
+text/html=google-chrome.desktop
+x-scheme-handler/http=google-chrome.desktop
+x-scheme-handler/https=google-chrome.desktop
+x-scheme-handler/about=google-chrome.desktop
+x-scheme-handler/unknown=google-chrome.desktop
+text/x-lua=org.kde.kate.desktop
+
+[Added Associations]
+text/x-lua=kitty.desktop;org.kde.kate.desktop;

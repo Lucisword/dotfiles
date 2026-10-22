@@ -1,0 +1,4 @@
+#!/bin/bash
+cur=$(powerprofilesctl get)
+c=$(printf '󰌪 power-saver\n󰾅 balanced\n󰓅 performance' | rofi -dmenu -i -p "Profile ($cur)" -theme-str 'window {width: 20%;} listview {lines: 3;}')
+[ -n "$c" ] && powerprofilesctl set "${c#* }" && pkill -RTMIN+8 waybar

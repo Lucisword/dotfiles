@@ -1,0 +1,3 @@
+#!/bin/bash
+pgrep -x blueman-manager >/dev/null && { pkill -x blueman-manager; exit; }
+hyprctl eval 'hl.dispatch(hl.dsp.exec_cmd("blueman-manager", { float = true }))'

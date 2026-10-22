@@ -1,0 +1,19 @@
+#!/bin/bash
+set -euo pipefail
+REPO=/mnt/shared/Coded/dotfiles
+HOME_ITEMS=(.config/hypr .config/waybar .config/kitty .config/rofi .config/mako .config/swappy
+  .config/qt6ct .config/gtk-3.0 .config/gtk-4.0 .config/kdeglobals .config/mimeapps.list .config/btop
+  .config/Code/User/settings.json .config/Code/User/keybindings.json .local/bin .bashrc)
+SYSTEM_ITEMS=(/etc/sddm.conf.d/10-theme.conf /etc/systemd/logind.conf.d/10-lid.conf
+  /etc/systemd/sleep.conf.d/10-delay.conf /etc/udev/rules.d/80-nvidia-pm.rules
+  /etc/tmpfiles.d/battery-conservation.conf /etc/systemd/system/powertop.service
+  "/etc/modprobe.d/*nvidia*" /etc/UPower/UPower.conf /etc/bluetooth/main.conf)
+home=(); for i in "${HOME_ITEMS[@]}"; do [ -e "$HOME/$i" ] && home+=("$i"); done
+sys=(); for f in "${SYSTEM_ITEMS[@]}"; do for g in $f; do [ -e "$g" ] && sys+=("$g"); done; done
+OPTS=(-rRL --no-perms --no-owner --no-group --omit-dir-times --delete --exclude='*.bak*' --exclude='*.orig')
+mkdir -p "$REPO"/{home,system,packages}
+(cd "$HOME" && rsync "${OPTS[@]}" "${home[@]}" "$REPO/home/")
+rsync "${OPTS[@]}" "${sys[@]}" "$REPO/system/"
+pacman -Qqen > "$REPO/packages/pacman.txt"
+pacman -Qqem > "$REPO/packages/aur.txt"
+echo "synced to $REPO"

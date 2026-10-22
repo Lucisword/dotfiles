@@ -1,0 +1,9 @@
+#!/bin/bash
+# usage: wp black | wp starry | wp girl
+case "$1" in
+  black)  f=black.png ;;
+  starry) f=starry-sky.jpg ;;
+  girl)   f=girl-behind-curtains.jpg ;;
+  *) echo "wp black|starry|girl"; exit 1 ;;
+esac
+hyprctl hyprpaper wallpaper ",/home/lucifer/Pictures/wallpapers/$f,cover"

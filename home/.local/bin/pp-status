@@ -1,0 +1,4 @@
+#!/bin/bash
+p=$(powerprofilesctl get)
+case $p in performance) i="󰓅";; balanced) i="󰾅";; *) i="󰌪";; esac
+printf '{"text":"%s","tooltip":"Power profile: %s"}\n' "$i" "$p"
