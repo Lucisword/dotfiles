@@ -18,4 +18,4 @@ pacman -Qqen > "$REPO/packages/pacman.txt"
 pacman -Qqem > "$REPO/packages/aur.txt"
 echo "synced to $REPO"
 systemctl list-unit-files --state=enabled --no-legend --no-pager | awk '$2=="enabled" && $3!="enabled"{print $1}' > "$REPO/packages/services-system.txt"
-systemctl --user list-unit-files --state=enabled --no-legend --no-pager | awk '$2=="enabled" && $3!="enabled"{print $1}' > "$REPO/packages/services-user.txt"
+find "$HOME/.config/systemd/user" -path '*.wants/*' -printf '%f\n' 2>/dev/null > "$REPO/packages/services-user.txt" || true
