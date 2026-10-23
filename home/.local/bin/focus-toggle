@@ -1,0 +1,15 @@
+#!/bin/bash
+# usage: focus-toggle [minutes]   (no argument = 25; runs again to cancel)
+st=/tmp/focus.state
+if [ -f "$st" ]; then
+  read -r pid _ < "$st"; kill -- -"$pid" 2>/dev/null; rm -f "$st"
+  pkill -RTMIN+11 waybar; notify-send "Focus cancelled"; exit 0
+fi
+m=${1:-25}; [[ "$m" =~ ^[0-9]+$ ]] && [ "$m" -ge 1 ] || exit 1
+setsid bash -c '
+  sleep "$1"; notify-send -u normal "Focus done" "Take a 2 minute break"
+  echo "$$ $(( $(date +%s)+120 )) Break" > /tmp/focus.state; pkill -RTMIN+11 waybar
+  sleep 120; notify-send "Break over" "Back to work"; rm -f /tmp/focus.state; pkill -RTMIN+11 waybar
+' _ $((m*60)) &
+echo "$! $(( $(date +%s)+m*60 )) Focus" > "$st"
+pkill -RTMIN+11 waybar; notify-send "Focus started" "$m minutes"

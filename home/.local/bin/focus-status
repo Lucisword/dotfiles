@@ -1,0 +1,7 @@
+#!/bin/bash
+st=/tmp/focus.state
+[ -f "$st" ] || { echo '{"text":"󰔛","tooltip":"Click: 25 min focus. Right-click: choose time"}'; exit; }
+read -r pid end label < "$st"
+left=$(( (end-$(date +%s)+59)/60 )); [ "$left" -lt 0 ] && left=0
+icon="󰔛"; [ "$label" = Break ] && icon="󰅶"
+echo "{\"text\":\"$icon ${left}m\",\"tooltip\":\"$label, $left min left\"}"

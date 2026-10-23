@@ -1,0 +1,3 @@
+#!/bin/bash
+c=$(printf '15\n25\n45\n60\n90' | rofi -dmenu -i -p "Focus minutes (type any)" -theme-str 'window {width: 25%;} listview {lines: 5;}')
+[ -n "$c" ] && ~/.local/bin/focus-toggle "$c"

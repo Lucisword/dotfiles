@@ -12,6 +12,8 @@
     "modules-right": [
         "idle_inhibitor",
         "wireplumber",
+        "custom/weather",
+        "custom/focus",
         "custom/rec",
         "bluetooth",
         "custom/power-profile",
@@ -86,6 +88,8 @@
     "bluetooth": { "format": "󰂯", "format-off": "󰂲", "format-disabled": "󰂲", "format-connected": "󰂱", "tooltip-format": "{status}", "tooltip-format-connected": "{device_alias}", "on-click": "/home/lucifer/.local/bin/bt-menu", "on-click-right": "/home/lucifer/.local/bin/bt-toggle" },
     "custom/power-profile": { "exec": "/home/lucifer/.local/bin/pp-status", "return-type": "json", "interval": "once", "signal": 8, "on-click": "/home/lucifer/.local/bin/pp-menu" },
     "custom/rec": { "exec": "/home/lucifer/.local/bin/rec-status", "return-type": "json", "interval": "once", "signal": 9, "on-click": "/home/lucifer/.local/bin/rec-toggle" },
+    "custom/weather": { "exec": "/home/lucifer/.local/bin/weather-status", "return-type": "json", "interval": 7200, "signal": 10, "on-click": "pkill -RTMIN+10 waybar" },
+    "custom/focus": { "exec": "/home/lucifer/.local/bin/focus-status", "return-type": "json", "interval": 60, "signal": 11, "on-click": "/home/lucifer/.local/bin/focus-toggle", "on-click-right": "/home/lucifer/.local/bin/focus-menu" },
     "clock": {
         "format": "{:%I:%M %p  %d-%m-%Y}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>"

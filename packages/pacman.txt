@@ -14,6 +14,7 @@ dkms
 dolphin
 dunst
 efibootmgr
+fastfetch
 firefox
 git
 github-cli
@@ -33,6 +34,7 @@ intel-media-driver
 intel-ucode
 inter-font
 jdk-openjdk
+jq
 kate
 kitty
 kvantum

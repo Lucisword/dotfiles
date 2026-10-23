@@ -1,0 +1,10 @@
+#!/bin/bash
+cache=~/.cache/weather.json; mkdir -p ~/.cache
+loc=$(cat ~/.config/weather-location 2>/dev/null); loc=${loc// /+}
+t=$(curl -fs --max-time 8 "wttr.in/${loc}?format=%c+%t")
+tip=$(curl -fs --max-time 8 "wttr.in/${loc}?format=%l:+%C,+%t+(feels+%f),+humidity+%h,+wind+%w")
+if [ -n "$t" ] && [ -n "$tip" ] && [[ "$t$tip" != *"<"* ]] && [[ "$t$tip" != *Unknown* ]]; then
+  jq -nc --arg t "$t" --arg tt "$tip" '{text:$t,tooltip:$tt}' | tee "$cache"
+else
+  cat "$cache" 2>/dev/null || echo '{"text":"󰖪","tooltip":"Weather unavailable (click to retry)"}'
+fi
