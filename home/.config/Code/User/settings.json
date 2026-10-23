@@ -1,5 +1,5 @@
 {
-  "workbench.colorTheme": "Default Dark Modern",
+  "workbench.colorTheme": "Dark Modern",
   "editor.fontFamily": "'JetBrainsMono Nerd Font', monospace",
   "editor.fontSize": 14,
   "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font'",
@@ -27,5 +27,6 @@
     "statusBar.noFolderBackground": "#000000",
     "list.hoverBackground": "#0d0d0d",
     "list.activeSelectionBackground": "#1a1a1a"
-  }
+  },
+  "java.import.gradle.enabled": false
 }
