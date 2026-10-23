@@ -1,0 +1,2 @@
+#!/bin/bash
+~/.local/bin/dotsync && cd /mnt/shared/Coded/dotfiles && git add -A && { git commit -m "${1:-Update dotfiles}" || true; } && git push

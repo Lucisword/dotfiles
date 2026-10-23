@@ -7,7 +7,7 @@ HOME_ITEMS=(.config/hypr .config/waybar .config/kitty .config/rofi .config/mako 
 SYSTEM_ITEMS=(/etc/sddm.conf.d/10-theme.conf /etc/systemd/logind.conf.d/10-lid.conf
   /etc/systemd/sleep.conf.d/10-delay.conf /etc/udev/rules.d/80-nvidia-pm.rules
   /etc/tmpfiles.d/battery-conservation.conf /etc/systemd/system/powertop.service
-  "/etc/modprobe.d/*nvidia*" /etc/UPower/UPower.conf /etc/bluetooth/main.conf)
+  "/etc/modprobe.d/*nvidia*" /etc/UPower/UPower.conf /etc/bluetooth/main.conf /etc/xdg/reflector/reflector.conf)
 home=(); for i in "${HOME_ITEMS[@]}"; do [ -e "$HOME/$i" ] && home+=("$i"); done
 sys=(); for f in "${SYSTEM_ITEMS[@]}"; do for g in $f; do [ -e "$g" ] && sys+=("$g"); done; done
 OPTS=(-rRL --no-perms --no-owner --no-group --omit-dir-times --delete --exclude='*.bak*' --exclude='*.orig')

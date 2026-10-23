@@ -27,6 +27,7 @@ hyprlock
 hyprpaper
 hyprpolkitagent
 imagemagick
+intel-media-driver
 intel-ucode
 inter-font
 jdk-openjdk
@@ -36,6 +37,7 @@ kvantum
 less
 libpulse
 libva-nvidia-driver
+libva-utils
 linux
 linux-firmware
 linux-headers

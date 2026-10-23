@@ -10,3 +10,4 @@ sddm.service
 ufw.service
 upower.service
 fstrim.timer
+reflector.timer
