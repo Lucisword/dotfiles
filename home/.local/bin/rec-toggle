@@ -1,0 +1,23 @@
+#!/bin/bash
+# usage: rec-toggle region|full   (same key starts and stops)
+dir=~/Videos/Recordings
+if pgrep -x wf-recorder >/dev/null; then
+  pkill -INT -x wf-recorder; sleep 1
+  for m in $(tac -s' ' /tmp/rec-modules 2>/dev/null); do pactl unload-module "$m" 2>/dev/null; done
+  rm -f /tmp/rec-modules
+  pkill -RTMIN+9 waybar
+  notify-send "Recording saved" "$(cat /tmp/rec-file)"
+  exit 0
+fi
+args=()
+if [ "${1:-region}" = region ]; then g=$(slurp) || exit 0; args=(-g "$g"); fi
+sink=$(pactl get-default-sink); src=$(pactl get-default-source)
+m1=$(pactl load-module module-null-sink sink_name=rec_mix)
+m2=$(pactl load-module module-loopback source="$sink.monitor" sink=rec_mix latency_msec=30)
+m3=$(pactl load-module module-loopback source="$src" sink=rec_mix latency_msec=30)
+echo "$m1 $m2 $m3" > /tmp/rec-modules
+f="$dir/rec_$(date +%F_%H-%M-%S).mp4"; echo "$f" > /tmp/rec-file
+wf-recorder "${args[@]}" -f "$f" --audio=rec_mix.monitor -c h264_vaapi -d /dev/dri/renderD128 >/tmp/rec.log 2>&1 &
+sleep 1
+if pgrep -x wf-recorder >/dev/null; then pkill -RTMIN+9 waybar; notify-send "Recording started"
+else notify-send -u critical "Recording failed" "$(tail -2 /tmp/rec.log)"; fi

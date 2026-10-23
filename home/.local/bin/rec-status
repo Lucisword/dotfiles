@@ -1,0 +1,2 @@
+#!/bin/bash
+if pgrep -x wf-recorder >/dev/null; then echo '{"text":"󰑋","tooltip":"Recording, click to stop"}'; else echo '{"text":""}'; fi

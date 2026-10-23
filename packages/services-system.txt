@@ -1,4 +1,5 @@
 bluetooth.service
+mongodb.service
 NetworkManager-dispatcher.service
 NetworkManager.service
 nvidia-hibernate.service

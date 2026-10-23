@@ -205,3 +205,7 @@ hl.bind(mainMod .. " + SHIFT + right", hl.dsp.window.resize({ x = 30,  y = 0,  r
 hl.bind(mainMod .. " + SHIFT + left",  hl.dsp.window.resize({ x = -30, y = 0,  relative = true }), { repeating = true })
 hl.bind(mainMod .. " + SHIFT + down",  hl.dsp.window.resize({ x = 0,   y = 30, relative = true }), { repeating = true })
 hl.bind(mainMod .. " + SHIFT + up",    hl.dsp.window.resize({ x = 0,   y = -30, relative = true }), { repeating = true })
+
+-- Screen recording
+hl.bind(mainMod .. " + R",         hl.dsp.exec_cmd("/home/lucifer/.local/bin/rec-toggle region"))
+hl.bind(mainMod .. " + ALT + R",   hl.dsp.exec_cmd("/home/lucifer/.local/bin/rec-toggle full"))

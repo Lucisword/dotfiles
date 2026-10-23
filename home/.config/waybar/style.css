@@ -138,3 +138,4 @@ window#waybar #hyprland-workspaces button.visible label {
 window#waybar, window#waybar > box { background: #000000; }
 #tray, #tray > *, #tray .passive, #tray .active { background: transparent; }
 #tray menu { background: #000000; color: #e6e6e6; }
+#custom-rec { color: #ff3b30; padding: 0 8px; }

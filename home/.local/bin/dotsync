@@ -2,7 +2,7 @@
 set -euo pipefail
 REPO=/mnt/shared/Coded/dotfiles
 HOME_ITEMS=(.config/hypr .config/waybar .config/kitty .config/rofi .config/mako .config/swappy
-  .config/qt6ct .config/gtk-3.0 .config/gtk-4.0 .config/kdeglobals .config/mimeapps.list .config/btop
+  .config/qt6ct .config/gtk-3.0 .config/gtk-4.0 .config/kdeglobals .config/mimeapps.list .config/btop .config/zathura .config/mpv
   .config/Code/User/settings.json .config/Code/User/keybindings.json .local/bin .bashrc)
 SYSTEM_ITEMS=(/etc/sddm.conf.d/10-theme.conf /etc/systemd/logind.conf.d/10-lid.conf
   /etc/systemd/sleep.conf.d/10-delay.conf /etc/udev/rules.d/80-nvidia-pm.rules

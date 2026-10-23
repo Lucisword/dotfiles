@@ -12,6 +12,7 @@
     "modules-right": [
         "idle_inhibitor",
         "wireplumber",
+        "custom/rec",
         "bluetooth",
         "custom/power-profile",
         "battery",
@@ -84,6 +85,7 @@
     "idle_inhibitor": { "format": "{icon}", "format-icons": { "activated": "󰅶", "deactivated": "󰛊" }, "tooltip-format-activated": "Caffeine ON", "tooltip-format-deactivated": "Caffeine OFF" },
     "bluetooth": { "format": "󰂯", "format-off": "󰂲", "format-disabled": "󰂲", "format-connected": "󰂱", "tooltip-format": "{status}", "tooltip-format-connected": "{device_alias}", "on-click": "/home/lucifer/.local/bin/bt-menu", "on-click-right": "/home/lucifer/.local/bin/bt-toggle" },
     "custom/power-profile": { "exec": "/home/lucifer/.local/bin/pp-status", "return-type": "json", "interval": "once", "signal": 8, "on-click": "/home/lucifer/.local/bin/pp-menu" },
+    "custom/rec": { "exec": "/home/lucifer/.local/bin/rec-status", "return-type": "json", "interval": "once", "signal": 9, "on-click": "/home/lucifer/.local/bin/rec-toggle" },
     "clock": {
         "format": "{:%I:%M %p  %d-%m-%Y}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>"
