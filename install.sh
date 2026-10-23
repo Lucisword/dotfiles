@@ -97,6 +97,7 @@ else
   fi
 fi
 
+bash "$REPO/vscode-ext.sh"
 say "Rebuilding kernel images"
 sudo mkinitcpio -P
 [ "$need_grub" = 1 ] && sudo grub-mkconfig -o /boot/grub/grub.cfg

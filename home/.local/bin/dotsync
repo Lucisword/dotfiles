@@ -2,7 +2,7 @@
 set -euo pipefail
 REPO=/mnt/shared/Coded/dotfiles
 HOME_ITEMS=(.config/hypr .config/waybar .config/kitty .config/rofi .config/mako .config/swappy
-  .config/qt6ct .config/gtk-3.0 .config/gtk-4.0 .config/kdeglobals .config/mimeapps.list .config/btop .config/zathura .config/mpv
+  .config/qt6ct .config/gtk-3.0 .config/gtk-4.0 .config/kdeglobals .config/mimeapps.list .config/btop .config/code-flags.conf .config/zathura .config/mpv
   .config/Code/User/settings.json .config/Code/User/keybindings.json .local/bin .bashrc)
 SYSTEM_ITEMS=(/etc/sddm.conf.d/10-theme.conf /etc/systemd/logind.conf.d/10-lid.conf
   /etc/systemd/sleep.conf.d/10-delay.conf /etc/udev/rules.d/80-nvidia-pm.rules
@@ -19,3 +19,4 @@ pacman -Qqem > "$REPO/packages/aur.txt"
 echo "synced to $REPO"
 systemctl list-unit-files --state=enabled --no-legend --no-pager | awk '$2=="enabled" && $3!="enabled"{print $1}' > "$REPO/packages/services-system.txt"
 find "$HOME/.config/systemd/user" -path '*.wants/*' -printf '%f\n' 2>/dev/null > "$REPO/packages/services-user.txt" || true
+code --list-extensions > "$REPO/packages/vscode-extensions.txt" 2>/dev/null || true

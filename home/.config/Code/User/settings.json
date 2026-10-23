@@ -1,2 +1,31 @@
 {
+  "workbench.colorTheme": "Default Dark Modern",
+  "editor.fontFamily": "'JetBrainsMono Nerd Font', monospace",
+  "editor.fontSize": 14,
+  "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font'",
+  "editor.minimap.enabled": false,
+  "editor.cursorBlinking": "solid",
+  "editor.smoothScrolling": false,
+  "editor.cursorSmoothCaretAnimation": "off",
+  "workbench.list.smoothScrolling": false,
+  "terminal.integrated.smoothScrolling": false,
+  "workbench.colorCustomizations": {
+    "editor.background": "#000000",
+    "editorGutter.background": "#000000",
+    "sideBar.background": "#000000",
+    "sideBarSectionHeader.background": "#000000",
+    "activityBar.background": "#000000",
+    "panel.background": "#000000",
+    "terminal.background": "#000000",
+    "titleBar.activeBackground": "#000000",
+    "titleBar.inactiveBackground": "#000000",
+    "tab.activeBackground": "#000000",
+    "tab.inactiveBackground": "#000000",
+    "editorGroupHeader.tabsBackground": "#000000",
+    "breadcrumb.background": "#000000",
+    "statusBar.background": "#000000",
+    "statusBar.noFolderBackground": "#000000",
+    "list.hoverBackground": "#0d0d0d",
+    "list.activeSelectionBackground": "#1a1a1a"
+  }
 }
