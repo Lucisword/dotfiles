@@ -2,6 +2,7 @@ brave-bin
 google-chrome
 mongodb-bin
 mongosh-bin
+spotify-adblock-git
 visual-studio-code-bin
 yay
 yay-debug

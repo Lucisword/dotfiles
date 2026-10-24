@@ -1,0 +1,3 @@
+#!/bin/bash
+sleep 0.3
+makoctl menu -- rofi -dmenu -i -p "Choose action" -theme-str 'window {width: 30%;} listview {lines: 4;}'

@@ -7,3 +7,8 @@ default-timeout=4000
 font=JetBrainsMono Nerd Font 10
 padding=10
 margin=10
+
+[actionable=1]
+default-timeout=0
+ignore-timeout=1
+on-notify=exec /home/lucifer/.local/bin/notif-action
